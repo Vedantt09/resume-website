@@ -25,6 +25,11 @@ const applications = [
   { name: "PowerPoint", icon: "fa-file-powerpoint", rating: 4 }
 ];
 
+const hardwareTechnologies = [
+  { name: "Internet of Things (IoT)", icon: "fa-microchip", rating: 3 },
+  { name: "Raspberry Pi", icon: "fa-server", rating: 3 }
+];
+
 /* ==========================================
    CREATE FIXED, NON-INTERACTIVE STAR RATINGS
    Viewers cannot change ratings by clicking
@@ -130,6 +135,42 @@ function renderApplications() {
 }
 
 /* ==========================================
+   DISPLAY HARDWARE & EMERGING TECHNOLOGIES
+========================================== */
+
+function renderHardwareTechnologies() {
+  const container = document.getElementById("hardwareSkillsContainer");
+
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  hardwareTechnologies.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "application-card";
+
+    const icon = document.createElement("i");
+    icon.className = `fa-solid ${item.icon} application-icon`;
+    icon.setAttribute("aria-hidden", "true");
+
+    const name = document.createElement("span");
+    name.className = "application-name";
+    name.textContent = item.name;
+
+    card.appendChild(icon);
+    card.appendChild(name);
+    card.appendChild(createStars(item.name, item.rating));
+
+    const rating = document.createElement("span");
+    rating.className = "rating-text";
+    rating.textContent = `${item.rating}/5`;
+
+    card.appendChild(rating);
+    container.appendChild(card);
+  });
+}
+
+/* ==========================================
    DOWNLOAD RESUME AS PDF
 ========================================== */
 
@@ -205,3 +246,4 @@ if ("IntersectionObserver" in window) {
 
 renderProgrammingLanguages();
 renderApplications();
+renderHardwareTechnologies();
