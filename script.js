@@ -22,19 +22,28 @@ const applications = [
   { name: "MySQL", icon: "fa-database", rating: 4 },
   { name: "Excel", icon: "fa-file-excel", rating: 4 },
   { name: "MS Word", icon: "fa-file-word", rating: 4 },
-  { name: "PowerPoint", icon: "fa-file-powerpoint", rating: 4 },
+  { name: "PowerPoint", icon: "fa-file-powerpoint", rating: 4 }
 ];
 
 /* ==========================================
-   GENERATE FIXED FIVE-STAR RATINGS
-   Stars are display-only, not clickable
+   CREATE FIXED, NON-INTERACTIVE STAR RATINGS
+   Viewers cannot change ratings by clicking
 ========================================== */
 
 function createStars(name, rating) {
   const wrapper = document.createElement("div");
+
   wrapper.className = "stars";
   wrapper.setAttribute("role", "img");
-  wrapper.setAttribute("aria-label", `${name}: ${rating} out of 5 stars`);
+  wrapper.setAttribute(
+    "aria-label",
+    `${name}: ${rating} out of 5 stars`
+  );
+
+  // Prevent pointer interaction with the stars
+  wrapper.style.pointerEvents = "none";
+  wrapper.style.userSelect = "none";
+  wrapper.style.cursor = "default";
 
   for (let i = 1; i <= 5; i++) {
     const star = document.createElement("span");
@@ -59,6 +68,9 @@ function createStars(name, rating) {
 
 function renderProgrammingLanguages() {
   const container = document.getElementById("programmingSkills");
+
+  if (!container) return;
+
   container.innerHTML = "";
 
   programmingLanguages.forEach(skill => {
@@ -87,6 +99,9 @@ function renderProgrammingLanguages() {
 
 function renderApplications() {
   const container = document.getElementById("applicationsSkills");
+
+  if (!container) return;
+
   container.innerHTML = "";
 
   applications.forEach(app => {
@@ -118,16 +133,23 @@ function renderApplications() {
    DOWNLOAD RESUME AS PDF
 ========================================== */
 
-document.getElementById("downloadResume").addEventListener("click", () => {
-  window.print();
-});
+const downloadButton = document.getElementById("downloadResume");
+
+if (downloadButton) {
+  downloadButton.addEventListener("click", () => {
+    window.print();
+  });
+}
 
 /* ==========================================
    CURRENT YEAR IN FOOTER
 ========================================== */
 
-document.getElementById("currentYear").textContent =
-  new Date().getFullYear();
+const yearElement = document.getElementById("currentYear");
+
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
 
 /* ==========================================
    BACK TO TOP BUTTON
@@ -135,16 +157,18 @@ document.getElementById("currentYear").textContent =
 
 const backToTop = document.getElementById("backToTop");
 
-window.addEventListener("scroll", () => {
-  backToTop.classList.toggle("visible", window.scrollY > 300);
-});
-
-backToTop.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
+if (backToTop) {
+  window.addEventListener("scroll", () => {
+    backToTop.classList.toggle("visible", window.scrollY > 300);
   });
-});
+
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+}
 
 /* ==========================================
    ACTIVE SIDEBAR NAVIGATION
@@ -174,6 +198,10 @@ if ("IntersectionObserver" in window) {
 
   sections.forEach(section => observer.observe(section));
 }
+
+/* ==========================================
+   INITIALIZE PAGE
+========================================== */
 
 renderProgrammingLanguages();
 renderApplications();
