@@ -4,26 +4,25 @@
 ========================================== */
 
 const programmingLanguages = [
-  { name: "C", rating: 3 },
-  { name: "C++", rating: 3 },
+  { name: "C", rating: 4 },
+  { name: "C++", rating: 4 },
   { name: "Python", rating: 4 },
   { name: "Java", rating: 3 },
   { name: "HTML", rating: 4 },
   { name: "CSS", rating: 4 },
   { name: "JavaScript", rating: 3 },
-  { name: "SQL", rating: 3 },
-  { name: "Kotlin", rating: 2 }
+  { name: "SQL", rating: 4 },
+  { name: "Kotlin", rating: 3 }
 ];
 
 const applications = [
   { name: "VS Code", icon: "fa-code", rating: 4 },
-  { name: "Android Studio", icon: "fa-mobile-screen-button", rating: 3 },
+  { name: "Android Studio", icon: "fa-mobile-screen-button", rating: 4 },
   { name: "Git", icon: "fa-code-branch", rating: 3 },
-  { name: "MySQL", icon: "fa-database", rating: 3 },
+  { name: "MySQL", icon: "fa-database", rating: 4 },
   { name: "Excel", icon: "fa-file-excel", rating: 4 },
   { name: "MS Word", icon: "fa-file-word", rating: 4 },
   { name: "PowerPoint", icon: "fa-file-powerpoint", rating: 4 },
-  { name: "Google Colab", icon: "fa-brain", rating: 3 }
 ];
 
 /* ==========================================
