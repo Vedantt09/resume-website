@@ -312,11 +312,6 @@ button {
   transition: 0.25s;
 }
 
-.education-card:hover {
-  border-color: var(--blue);
-  transform: translateY(-3px);
-}
-
 .small-icon {
   flex: 0 0 34px;
   height: 34px;
@@ -466,14 +461,6 @@ button {
   .skills-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-}
-
-.skill-name {
-  display: block;
-  font-size: 11px;
-  color: #d5e4ff;
-  margin-bottom: 7px;
-  overflow-wrap: anywhere;
 }
 
 .stars {
