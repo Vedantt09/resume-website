@@ -925,3 +925,99 @@ footer {
     margin: 12mm;
   }
 }
+
+
+/* =========================================
+   UNIVERSAL CARD GLOW EFFECT
+   Applies across all resume sections
+========================================= */
+
+/* Smooth transitions for all cards */
+.education-card,
+.skill-item,
+.application-card,
+.language-card,
+.hobby-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Full-card glow on hover */
+.education-card:hover,
+.skill-item:hover,
+.application-card:hover,
+.language-card:hover,
+.hobby-card:hover {
+  transform: translateY(-5px);
+  border-color: #438fff;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(48, 132, 255, 0.35),
+      transparent 75%
+    ),
+    linear-gradient(
+      135deg,
+      #102b53,
+      #0b1d38
+    );
+
+  box-shadow:
+    0 0 12px rgba(40, 124, 255, 0.25),
+    0 0 28px rgba(40, 124, 255, 0.18),
+    inset 0 0 20px rgba(40, 124, 255, 0.08);
+}
+
+/* Brighten the content inside the hovered card */
+.education-card:hover h3,
+.education-card:hover p,
+.skill-item:hover .skill-name,
+.skill-item:hover .rating-text,
+.application-card:hover .application-name,
+.language-card:hover h3,
+.language-card:hover p,
+.hobby-card:hover span {
+  color: #ffffff;
+}
+
+/* Make icons glow */
+.education-card:hover .small-icon,
+.application-card:hover .application-icon,
+.hobby-card:hover i {
+  color: #75b7ff;
+  filter: drop-shadow(0 0 7px rgba(75, 160, 255, 0.8));
+}
+
+/* Slightly brighten the stars without changing their ratings */
+.skill-item:hover .star.filled {
+  filter: drop-shadow(0 0 4px rgba(255, 191, 71, 0.55));
+}
+
+/* Smooth hover effects only on devices with a mouse */
+@media (hover: hover) and (pointer: fine) {
+  .education-card,
+  .skill-item,
+  .application-card,
+  .language-card,
+  .hobby-card {
+    cursor: pointer;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .education-card,
+  .skill-item,
+  .application-card,
+  .language-card,
+  .hobby-card {
+    transition: none;
+  }
+}
