@@ -1,4 +1,3 @@
-
 /* ==========================================
    EDIT YOUR SKILL NAMES AND RATINGS HERE
    Rating: 1 = beginner, 5 = excellent
@@ -28,54 +27,26 @@ const applications = [
 ];
 
 /* ==========================================
-   GENERATE INTERACTIVE FIVE-STAR RATINGS
+   GENERATE FIXED FIVE-STAR RATINGS
+   Stars are display-only, not clickable
 ========================================== */
 
-function createStars(name, initialRating, type, index) {
+function createStars(name, rating) {
   const wrapper = document.createElement("div");
   wrapper.className = "stars";
-  wrapper.setAttribute("role", "group");
-  wrapper.setAttribute("aria-label", `${name} skill rating`);
+  wrapper.setAttribute("role", "img");
+  wrapper.setAttribute("aria-label", `${name}: ${rating} out of 5 stars`);
 
   for (let i = 1; i <= 5; i++) {
-    const star = document.createElement("button");
+    const star = document.createElement("span");
 
-    star.type = "button";
     star.className = "star";
-    star.innerHTML = "★";
-    star.title = `${i} out of 5 stars`;
-    star.setAttribute("aria-label", `${i} out of 5 stars`);
-    star.setAttribute("aria-pressed", i === initialRating ? "true" : "false");
+    star.textContent = "★";
+    star.setAttribute("aria-hidden", "true");
 
-    if (i <= initialRating) {
+    if (i <= rating) {
       star.classList.add("filled");
     }
-
-    star.addEventListener("click", () => {
-      const allStars = wrapper.querySelectorAll(".star");
-
-      allStars.forEach((item, position) => {
-        const selected = position < i;
-
-        item.classList.toggle("filled", selected);
-        item.setAttribute("aria-pressed", position + 1 === i ? "true" : "false");
-      });
-
-      const ratingText = wrapper.parentElement.querySelector(".rating-text");
-
-      if (ratingText) {
-        ratingText.textContent = `${i}/5`;
-      }
-
-      // Update the corresponding data array.
-      if (type === "programming") {
-        programmingLanguages[index].rating = i;
-      } else {
-        applications[index].rating = i;
-      }
-
-      console.log(`${name}: ${i}/5`);
-    });
 
     wrapper.appendChild(star);
   }
@@ -91,7 +62,7 @@ function renderProgrammingLanguages() {
   const container = document.getElementById("programmingSkills");
   container.innerHTML = "";
 
-  programmingLanguages.forEach((skill, index) => {
+  programmingLanguages.forEach(skill => {
     const item = document.createElement("div");
     item.className = "skill-item";
 
@@ -100,10 +71,7 @@ function renderProgrammingLanguages() {
     name.textContent = skill.name;
 
     item.appendChild(name);
-
-    item.appendChild(
-      createStars(skill.name, skill.rating, "programming", index)
-    );
+    item.appendChild(createStars(skill.name, skill.rating));
 
     const rating = document.createElement("span");
     rating.className = "rating-text";
@@ -122,7 +90,7 @@ function renderApplications() {
   const container = document.getElementById("applicationsSkills");
   container.innerHTML = "";
 
-  applications.forEach((app, index) => {
+  applications.forEach(app => {
     const card = document.createElement("div");
     card.className = "application-card";
 
@@ -136,10 +104,7 @@ function renderApplications() {
 
     card.appendChild(icon);
     card.appendChild(name);
-
-    card.appendChild(
-      createStars(app.name, app.rating, "application", index)
-    );
+    card.appendChild(createStars(app.name, app.rating));
 
     const rating = document.createElement("span");
     rating.className = "rating-text";
