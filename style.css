@@ -1,4 +1,3 @@
-
 :root {
   --bg: #040b17;
   --sidebar: #061020;
@@ -375,7 +374,6 @@ button {
   margin: 20px 0 11px;
 }
 
-
 /* Programming languages: card layout */
 .skills-grid {
   display: grid;
@@ -396,14 +394,6 @@ button {
               box-shadow 0.25s ease;
 }
 
-/* Blue glow when the cursor moves over a card */
-.skill-item:hover {
-  border-color: var(--blue);
-  background: linear-gradient(135deg, #102a55, #0b1e3b);
-  transform: translateY(-4px);
-  box-shadow: 0 8px 22px rgba(40, 124, 255, 0.16);
-}
-
 .skill-name {
   display: block;
   font-size: 11px;
@@ -411,10 +401,6 @@ button {
   margin-bottom: 9px;
   overflow-wrap: anywhere;
   transition: color 0.25s ease;
-}
-
-.skill-item:hover .skill-name {
-  color: #ffffff;
 }
 
 .skill-item .stars {
@@ -432,10 +418,6 @@ button {
   line-height: 1.2;
   cursor: pointer;
   transition: color 0.15s ease, transform 0.15s ease;
-}
-
-.skill-item .star.filled {
-  color: var(--gold);
 }
 
 .skill-item .star:hover {
@@ -515,11 +497,6 @@ button {
   transition: 0.25s;
 }
 
-.application-card:hover {
-  border-color: var(--blue);
-  transform: translateY(-3px);
-}
-
 .application-icon {
   display: block;
   color: var(--blue-light);
@@ -587,10 +564,6 @@ button {
   gap: 8px;
   text-align: center;
   transition: 0.2s;
-}
-
-.hobby-card:hover {
-  border-color: var(--blue);
 }
 
 .hobby-card i {
@@ -912,7 +885,6 @@ footer {
     margin: 12mm;
   }
 }
-
 
 /* =========================================
    UNIVERSAL CARD GLOW EFFECT
